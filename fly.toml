@@ -6,16 +6,17 @@
 app = 'docker-nginx2'
 primary_region = 'nrt'
 
+
+[build]
+  image = "dhparkdocker/nginx-my-html:0.2.0"
+
 [http_service]
-  internal_port = 8080
+  internal_port = 80
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
-  min_machines_running = 0
+  min_machines_running = 3 
   processes = ['app']
-
-[build]
-  image = "nginx"
 
 [[vm]]
   cpu_kind = 'shared'
